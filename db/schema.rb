@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129202840) do
+ActiveRecord::Schema.define(version: 20151129215049) do
 
   create_table "fare_routes", force: :cascade do |t|
     t.integer  "fare_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151129202840) do
     t.integer  "shape_dist_traveled"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "shape_num"
   end
 
   create_table "stop_times", force: :cascade do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 20151129202840) do
     t.integer  "stop_sequence"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "stop_id"
   end
 
   create_table "stops", force: :cascade do |t|

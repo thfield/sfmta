@@ -14,15 +14,15 @@ fare_route:
 	contains_id (null)
 
 routes:
-  id,
-	agency_id,
-	route_short_name,
-	route_long_name,
-	route_desc, (null)
-	route_type,
-	route_url, (null)
-	route_color, (null)
-	route_text_color (null)
+  :id,
+	:agency_id,
+	:route_short_name,
+	:route_long_name,
+	:route_desc, (null)
+	:route_type,
+	:route_url, (null)
+	:route_color, (null)
+	:route_text_color (null)
 
 services:
   id,
@@ -37,7 +37,7 @@ services:
 	end_date
 
 shapes:
-  id,
+  shape_num,
 	shape_pt_lon,
 	shape_pt_lat,
 	shape_pt_sequence,
