@@ -1,0 +1,73 @@
+fare_attributes:
+  id,
+	price,
+	currency_type,
+	payment_method,
+	transfers,
+	transfer_duration
+
+fare_rules:
+  fare_id,
+	route_id,
+	origin_id, (null)
+	destination_id, (null)
+	contains_id (null)
+
+routes:
+  id,
+	agency_id,
+	route_short_name,
+	route_long_name,
+	route_desc, (null)
+	route_type,
+	route_url, (null)
+	route_color, (null)
+	route_text_color (null)
+
+services:
+  id,
+	monday,
+	tuesday,
+	wednesday,
+	thursday,
+	friday,
+	saturday,
+	sunday,
+	start_date,
+	end_date
+
+shapes:
+  id,
+	shape_pt_lon,
+	shape_pt_lat,
+	shape_pt_sequence,
+	shape_dist_traveled
+
+stop_times:
+  trip_id,
+	arrival_time,
+	departure_time,
+	stop_id,
+	stop_sequence,
+	stop_headsign, (null)
+	pickup_type, (null)
+	drop_off_type, (null)
+	shape_dist_traveled (null)
+
+stops:
+  id,
+	stop_name,
+	stop_desc, (null)
+	stop_lat,
+	stop_lon,
+	zone_id, (null)
+	stop_url (null)
+
+trips:
+  route_id,
+	service_id,
+	id,
+	trip_headsign,
+	direction_id,
+	block_id,
+	shape_id

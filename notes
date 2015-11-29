@@ -1,0 +1,84 @@
+fare:
+  id,
+	price,
+	currency_type,
+	payment_method,
+	transfers,
+	transfer_duration
+
+fare_route:
+  fare_id,
+	route_id,
+	origin_id, (null)
+	destination_id, (null)
+	contains_id (null)
+
+routes:
+  id,
+	agency_id,
+	route_short_name,
+	route_long_name,
+	route_desc, (null)
+	route_type,
+	route_url, (null)
+	route_color, (null)
+	route_text_color (null)
+
+services:
+  id,
+	monday,
+	tuesday,
+	wednesday,
+	thursday,
+	friday,
+	saturday,
+	sunday,
+	start_date,
+	end_date
+
+shapes:
+  id,
+	shape_pt_lon,
+	shape_pt_lat,
+	shape_pt_sequence,
+	shape_dist_traveled
+
+stop_times:
+  trip_id,
+	arrival_time,
+	departure_time,
+	stop_id,
+	stop_sequence,
+	stop_headsign, (null)
+	pickup_type, (null)
+	drop_off_type, (null)
+	shape_dist_traveled (null)
+
+stops:
+  id,
+	stop_name,
+	stop_desc, (null)
+	stop_lat,
+	stop_lon,
+	zone_id, (null)
+	stop_url (null)
+
+trips:
+  route_id,
+	service_id,
+	id,
+	trip_headsign,
+	direction_id,
+	block_id,
+	shape_id
+
+
+
+rails generate scaffold Route route_short_name:string route_long_name:string route_type:integer
+rails generate scaffold Shape shape_pt_lon:decimal shape_pt_lat:decimal shape_pt_sequence:integer shape_dist_traveled:integer
+rails generate scaffold Stop_time trip_id:integer arrival_time:datetime departure_time:datetime stop_sequence:integer
+rails generate scaffold Stop stop_name:string stop_lat:decimal stop_lon:decimal
+rails generate scaffold Trip route_id:integer service_id:integer trip_headsign:string direction_id:integer block_id:integer shape_id:integer
+rails generate scaffold Fare price:decimal currency_type:string payment_method:integer transfers:integer transfer_duration:integer
+rails generate scaffold Fare_route fare_id:integer route_id:integer
+rails generate scaffold Service monday:boolean tuesday:boolean wednesday:boolean thursday:boolean friday:boolean saturday:boolean sunday:boolean start_date:datetime end_date:datetime

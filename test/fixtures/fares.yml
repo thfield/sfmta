@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 9.99
+  currency_type: MyString
+  payment_method: 1
+  transfers: 1
+  transfer_duration: 1
+
+two:
+  price: 9.99
+  currency_type: MyString
+  payment_method: 1
+  transfers: 1
+  transfer_duration: 1

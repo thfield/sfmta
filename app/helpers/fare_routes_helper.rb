@@ -1,0 +1,2 @@
+module FareRoutesHelper
+end

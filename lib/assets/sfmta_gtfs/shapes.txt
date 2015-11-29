@@ -1,4 +1,4 @@
-shape_id,shape_pt_lon,shape_pt_lat,shape_pt_sequence,shape_dist_traveled
+id,shape_pt_lon,shape_pt_lat,shape_pt_sequence,shape_dist_traveled
 133138,-122.446793,37.787256,1,0
 133138,-122.448467,37.787042,2,149
 133138,-122.450106,37.786828,3,295
