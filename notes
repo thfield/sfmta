@@ -72,13 +72,25 @@ trips:
 	block_id,
 	shape_id
 
+37.755387,-122.386786
+37.755378,-122.386924
+
+rails generate model Route route_short_name:string route_long_name:string route_type:integer
+rails generate model Shape shape_pt_lon:decimal shape_pt_lat:decimal shape_pt_sequence:integer shape_dist_traveled:integer
+rails generate model Stop_time trip_id:integer arrival_time:datetime departure_time:datetime stop_sequence:integer
+rails generate model Stop stop_name:string stop_lat:decimal stop_lon:decimal
+rails generate model Trip route_id:integer service_id:integer trip_headsign:string direction_id:integer block_id:integer shape_id:integer
+rails generate model Fare price:decimal currency_type:string payment_method:integer transfers:integer transfer_duration:integer
+rails generate model Fare_route fare_id:integer route_id:integer
+rails generate model Service monday:boolean tuesday:boolean wednesday:boolean thursday:boolean friday:boolean saturday:boolean sunday:boolean start_date:datetime end_date:datetime
 
 
-rails generate scaffold Route route_short_name:string route_long_name:string route_type:integer
-rails generate scaffold Shape shape_pt_lon:decimal shape_pt_lat:decimal shape_pt_sequence:integer shape_dist_traveled:integer
-rails generate scaffold Stop_time trip_id:integer arrival_time:datetime departure_time:datetime stop_sequence:integer
-rails generate scaffold Stop stop_name:string stop_lat:decimal stop_lon:decimal
-rails generate scaffold Trip route_id:integer service_id:integer trip_headsign:string direction_id:integer block_id:integer shape_id:integer
-rails generate scaffold Fare price:decimal currency_type:string payment_method:integer transfers:integer transfer_duration:integer
-rails generate scaffold Fare_route fare_id:integer route_id:integer
-rails generate scaffold Service monday:boolean tuesday:boolean wednesday:boolean thursday:boolean friday:boolean saturday:boolean sunday:boolean start_date:datetime end_date:datetime
+zeroday = DateTime.parse('2015-11-29')
+mytrips = StopTime.where( arrival_time: (zeroday.change( { hour: 7 } )..zeroday.change( { hour: 8 } )))
+mystops = mytrips.select(:stop_id).distinct
+mytrips.where(stop_id: mystops.first.stop_id).length
+
+foo = Stop.where(id: StopTime.first.stop_id)[0]
+
+
+zeroday.change( { hour: 7} )

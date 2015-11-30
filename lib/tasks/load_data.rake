@@ -79,7 +79,7 @@ namespace :data do
   end
 
   task init_stop_times: :environment do
-    # StopTime.delete_all
+    StopTime.delete_all
     require 'csv'
     Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
     CSV.foreach('stop_times.txt', :headers => true) do |row|
@@ -126,4 +126,4 @@ namespace :data do
 
 end
 #http://stackoverflow.com/questions/4410794/ruby-on-rails-import-data-from-a-csv-file
-#command: rake data:load_stations[201402_station_data.csv]
+#command: rake data:init_<foo>
