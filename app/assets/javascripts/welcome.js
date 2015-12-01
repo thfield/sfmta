@@ -4,9 +4,6 @@
 //= require d3/d3
 //= require topojson/topojson
 
-var geodata = [{"num":4,"lon":-122.407646,"lat":37.765701},{"num":4,"lon":-122.405515,"lat":37.765861},{"num":4,"lon":-122.403617,"lat":37.76482},{"num":4,"lon":-122.401711,"lat":37.764771},{"num":4,"lon":-122.397785,"lat":37.764749},{"num":3,"lon":-122.397569,"lat":37.762614},{"num":1,"lon":-122.39516,"lat":37.762621},{"num":1,"lon":-122.39322,"lat":37.762732},{"num":1,"lon":-122.390848,"lat":37.762874},{"num":1,"lon":-122.388925,"lat":37.762992},{"num":2,"lon":-122.388753,"lat":37.760545},{"num":1,"lon":-122.389664,"lat":37.7629},{"num":1,"lon":-122.393471,"lat":37.762828},{"num":1,"lon":-122.395422,"lat":37.762701},{"num":1,"lon":-122.397352,"lat":37.76258},{"num":1,"lon":-122.397661,"lat":37.76498},{"num":1,"lon":-122.401451,"lat":37.764904},{"num":1,"lon":-122.403476,"lat":37.764817},{"num":1,"lon":-122.40469,"lat":37.766039}];
-
-
 $(document).ready(function() {
 
   var margin = {top: 10, left: 10, bottom: 10, right: 10}
@@ -35,6 +32,7 @@ $(document).ready(function() {
 
   svg.call(renderTiles, "highroad");
   svg.call(renderStops);
+  svg.call(renderRouteline);
 
   d3.select(window).on('resize', resize);
 
@@ -59,6 +57,10 @@ $(document).ready(function() {
     svg.selectAll('.minor_road').attr('d', path);
     svg.selectAll('.major_road').attr('d', path);
     svg.selectAll('.highway').attr('d', path);
+    svg.selectAll('.bus_route').attr('d', path);
+
+    //bus_stop resize not working, look into transform
+    svg.selectAll('.bus_stop').attr('d', path);
   }
 
   function renderTiles(svg, type) {
@@ -82,13 +84,23 @@ $(document).ready(function() {
   }
 
   function renderStops(){
-    d3.json('data/', function(data){
+    var geodata = [{"num":4,"lon":-122.407646,"lat":37.765701},{"num":4,"lon":-122.405515,"lat":37.765861},{"num":4,"lon":-122.403617,"lat":37.76482},{"num":4,"lon":-122.401711,"lat":37.764771},{"num":4,"lon":-122.397785,"lat":37.764749},{"num":3,"lon":-122.397569,"lat":37.762614},{"num":1,"lon":-122.39516,"lat":37.762621},{"num":1,"lon":-122.39322,"lat":37.762732},{"num":1,"lon":-122.390848,"lat":37.762874},{"num":1,"lon":-122.388925,"lat":37.762992},{"num":2,"lon":-122.388753,"lat":37.760545},{"num":1,"lon":-122.389664,"lat":37.7629},{"num":1,"lon":-122.393471,"lat":37.762828},{"num":1,"lon":-122.395422,"lat":37.762701},{"num":1,"lon":-122.397352,"lat":37.76258},{"num":1,"lon":-122.397661,"lat":37.76498},{"num":1,"lon":-122.401451,"lat":37.764904},{"num":1,"lon":-122.403476,"lat":37.764817},{"num":1,"lon":-122.40469,"lat":37.766039}];
+    // d3.json('data/', function(data){
       svg.selectAll('bus_stop')
-          .data(data)
+          .data(geodata)
         .enter().append('circle').attr('class', 'bus_stop')
           .attr('r', function(d) { return d.num*2 })
           .attr('transform', function(d) { return 'translate(' + projection([d.lon,d.lat]) + ')'; });
-    })
+    // })
+  }
+
+  function renderRouteline(){
+    d3.json('routeline/', function(data) {
+      svg.append('path')
+        .datum(data)
+        .attr('d', path)
+        .attr('class', 'bus_route')
+    });
 
   }
 
