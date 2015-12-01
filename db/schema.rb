@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129215049) do
+ActiveRecord::Schema.define(version: 20151201223505) do
 
   create_table "fare_routes", force: :cascade do |t|
     t.integer  "fare_id"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20151129215049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "fare_routes", ["fare_id"], name: "index_fare_routes_on_fare_id"
+  add_index "fare_routes", ["route_id"], name: "index_fare_routes_on_route_id"
 
   create_table "fares", force: :cascade do |t|
     t.decimal  "price"
@@ -30,6 +33,8 @@ ActiveRecord::Schema.define(version: 20151129215049) do
     t.datetime "updated_at",        null: false
   end
 
+  add_index "fares", ["id"], name: "index_fares_on_id"
+
   create_table "routes", force: :cascade do |t|
     t.string   "route_short_name"
     t.string   "route_long_name"
@@ -37,6 +42,8 @@ ActiveRecord::Schema.define(version: 20151129215049) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
+
+  add_index "routes", ["id"], name: "index_routes_on_id"
 
   create_table "services", force: :cascade do |t|
     t.boolean  "monday"
@@ -52,6 +59,8 @@ ActiveRecord::Schema.define(version: 20151129215049) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "services", ["id"], name: "index_services_on_id"
+
   create_table "shapes", force: :cascade do |t|
     t.decimal  "shape_pt_lon"
     t.decimal  "shape_pt_lat"
@@ -61,6 +70,8 @@ ActiveRecord::Schema.define(version: 20151129215049) do
     t.datetime "updated_at",          null: false
     t.integer  "shape_num"
   end
+
+  add_index "shapes", ["shape_num"], name: "index_shapes_on_shape_num"
 
   create_table "stop_times", force: :cascade do |t|
     t.integer  "trip_id"
@@ -72,6 +83,10 @@ ActiveRecord::Schema.define(version: 20151129215049) do
     t.integer  "stop_id"
   end
 
+  add_index "stop_times", ["arrival_time"], name: "index_stop_times_on_arrival_time"
+  add_index "stop_times", ["id"], name: "index_stop_times_on_id"
+  add_index "stop_times", ["stop_id"], name: "index_stop_times_on_stop_id"
+
   create_table "stops", force: :cascade do |t|
     t.string   "stop_name"
     t.decimal  "stop_lat"
@@ -79,6 +94,8 @@ ActiveRecord::Schema.define(version: 20151129215049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "stops", ["id"], name: "index_stops_on_id"
 
   create_table "trips", force: :cascade do |t|
     t.integer  "route_id"
@@ -90,5 +107,9 @@ ActiveRecord::Schema.define(version: 20151129215049) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  add_index "trips", ["id"], name: "index_trips_on_id"
+  add_index "trips", ["route_id"], name: "index_trips_on_route_id"
+  add_index "trips", ["shape_id"], name: "index_trips_on_shape_id"
 
 end

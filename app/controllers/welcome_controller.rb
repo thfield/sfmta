@@ -8,7 +8,8 @@ class WelcomeController < ApplicationController
     zeroday = DateTime.parse('2015-11-29')
 
     @whichRoute = 10885
-    @whatHour = 4
+    # @whichRoute = 1071
+    @whatHour = 12
 
     # @myRoute = Route.where(id: @whichRoute)[0]
     allStops = StopTime.includes({trip: :route}, :stop).where( arrival_time: (zeroday.change( { hour: @whatHour } )..zeroday.change( { hour: @whatHour + 1 } )) )
@@ -40,7 +41,7 @@ class WelcomeController < ApplicationController
     zeroday = DateTime.parse('2015-11-29')
 
     @whichRoute = 10885
-    @whatHour = 4
+    @whatHour = 12
 
     allStops = StopTime.includes({trip: :route}, :stop).where( arrival_time: (zeroday.change( { hour: @whatHour } )..zeroday.change( { hour: @whatHour + 1 } )) )
     myRoutesTrips = Array.new
