@@ -1,8 +1,8 @@
-// # Place all the behaviors and hooks related to the matching controller here.
-// # All this logic will automatically be available in application.js.
-// # You can use CoffeeScript in this file: http://coffeescript.org/
 //= require d3/d3
 //= require topojson/topojson
+
+var targetRouteLine = 10885,
+    hour =12;
 
 $(document).ready(function() {
 
@@ -31,8 +31,8 @@ $(document).ready(function() {
       .projection(projection);
 
   svg.call(renderTiles, "highroad");
-  svg.call(renderStops);
-  svg.call(renderRouteline);
+  svg.call(renderStops, targetRouteLine, hour);
+  svg.call(renderRouteline, targetRouteLine, hour);
 
   d3.select(window).on('resize', resize);
 
@@ -83,9 +83,9 @@ $(document).ready(function() {
         });
   }
 
-  function renderStops(){
-    d3.json('data/', function(data){
-      svg.selectAll('bus_stop')
+  function renderStops(_, routeNum, hour){
+    d3.json('busstops/'+ routeNum + '?time=' + hour, function(data){
+      _.selectAll('bus_stop')
           .data(data)
         .enter().append('circle').attr('class', 'bus_stop')
           .attr('r', function(d) { return Math.sqrt(d.num*2) })
@@ -93,9 +93,9 @@ $(document).ready(function() {
     })
   }
 
-  function renderRouteline(){
-    d3.json('routeline/', function(data) {
-      svg.append('path')
+  function renderRouteline(_, routeNum, hour){
+    d3.json('busroute/'+ routeNum + '?time=' + hour, function(data) {
+      _.append('path')
         .datum(data)
         .attr('d', path)
         .attr('class', 'bus_route')

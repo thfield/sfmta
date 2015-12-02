@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+
+  # resources :routes
   root 'welcome#index'
   get 'data/' => 'welcome#data'
   get 'routeline/' => 'welcome#routeline'
+  get 'busroute/:id' => 'routes#busline'
+  get 'busstops/:id' => 'routes#busstops'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
