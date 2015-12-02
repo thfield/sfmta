@@ -51,8 +51,8 @@ $(document).ready(function() {
   $('#draw').on('click', function () {
       $('.bus_route').remove();
       $('.bus_stop').remove();
-      svg.call(renderRouteline, $('#routeChooser').val(), hour);
-      svg.call(renderStops, $('#routeChooser').val(), hour);
+      svg.call(renderRouteline, $('#routeChooser').val(), $('#startHour').val());
+      svg.call(renderStops, $('#routeChooser').val(), $('#startHour').val());
     });
 
   function resize() {
