@@ -77,10 +77,9 @@ $(document).ready(function() {
     svg.selectAll('.minor_road').attr('d', path);
     svg.selectAll('.major_road').attr('d', path);
     svg.selectAll('.highway').attr('d', path);
-
-    //bus_stop resize not working, look into transform
-    svg.selectAll('.bus_stop').attr('d', path);
     svg.selectAll('.bus_route').attr('d', path);
+    svg.selectAll('.bus_stop')
+      .attr('transform', function(d) { return 'translate(' + projection([d.lon,d.lat]) + ')'; });
   }
 
   function renderTiles(svg, type) {
