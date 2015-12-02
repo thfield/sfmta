@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   # resources :routes
   root 'welcome#index'
-  get 'data/' => 'welcome#data'
-  get 'routeline/' => 'welcome#routeline'
+  get 'legal/' => 'welcome#legal'
+
   get 'busroute/:id' => 'routes#busline'
   get 'busstops/:id' => 'routes#busstops'
 
