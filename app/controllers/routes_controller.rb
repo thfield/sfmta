@@ -26,7 +26,10 @@ class RoutesController < ApplicationController
 
     @returndata = {
       'type'=>'Feature',
-      'properties' => {},
+      'properties' => {
+        'route' => @whichRoute,
+        'time' => @whatHour
+      },
       'geometry' => {'type' => 'LineString',
                      'coordinates' => coordinates
                     }
