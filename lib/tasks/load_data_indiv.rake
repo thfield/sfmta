@@ -1,17 +1,10 @@
 desc "init db"
 namespace :data do
 
-  task init_all: :environment do
+  task init_routes: :environment do
+    # Route.delete_all
     require 'csv'
     Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
-    Route.delete_all
-    Fare.delete_all
-    FareRoute.delete_all
-    Service.delete_all
-    Shape.delete_all
-    StopTime.delete_all
-    Stop.delete_all
-    Trip.delete_all
     CSV.foreach('routes.txt', :headers => true) do |row|
       Route.create!({
         :id               => row[0],
@@ -20,6 +13,12 @@ namespace :data do
         :route_type       => row[5]
         })
     end
+  end
+
+  task init_fares: :environment do
+    # Fare.delete_all
+    require 'csv'
+    Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
     CSV.foreach('fares.txt', :headers => true) do |row|
       Fare.create!({
         :id                 => row[0],
@@ -30,12 +29,24 @@ namespace :data do
         :transfer_duration  => row[5]
         })
     end
+  end
+
+  task init_fare_route: :environment do
+    # FareRoute.delete_all
+    require 'csv'
+    Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
     CSV.foreach('fare_route.txt', :headers => true) do |row|
       FareRoute.create!({
         :fare_id  => row[0],
         :route_id => row[1]
         })
     end
+  end
+
+  task init_services: :environment do
+    # Service.delete_all
+    require 'csv'
+    Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
     CSV.foreach('services.txt', :headers => true) do |row|
       Service.create!({
         :id         => row[0],
@@ -50,6 +61,12 @@ namespace :data do
         :end_date   => row[9]
         })
     end
+  end
+
+  task init_shapes: :environment do
+    # Shape.delete_all
+    require 'csv'
+    Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
     CSV.foreach('shapes.txt', :headers => true) do |row|
       Shape.create!({
         :shape_num             => row[0],
@@ -59,6 +76,12 @@ namespace :data do
         :shape_dist_traveled   => row[4]
         })
     end
+  end
+
+  task init_stop_times: :environment do
+    StopTime.delete_all
+    require 'csv'
+    Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
     CSV.foreach('stop_times.txt', :headers => true) do |row|
       StopTime.create!({
         :trip_id        => row[0],
@@ -68,6 +91,12 @@ namespace :data do
         :stop_sequence  => row[4]
         })
     end
+  end
+
+  task init_stops: :environment do
+    # Stop.delete_all
+    require 'csv'
+    Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
     CSV.foreach('stops.txt', :headers => true) do |row|
       Stop.create!({
         :id        => row[0],
@@ -76,6 +105,12 @@ namespace :data do
         :stop_lon  => row[4]
         })
     end
+  end
+
+  task init_trips: :environment do
+    # Trip.delete_all
+    require 'csv'
+    Dir.chdir(Rails.root + 'lib/assets/sfmta_gtfs')
     CSV.foreach('trips.txt', :headers => true) do |row|
       Trip.create!({
         :route_id      => row[0],
@@ -91,4 +126,4 @@ namespace :data do
 
 end
 #http://stackoverflow.com/questions/4410794/ruby-on-rails-import-data-from-a-csv-file
-#command: rake data:init_all
+#command: rake data:init_<foo>

@@ -1,8 +1,11 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:busline, :busstops]
+#TODO move shared code into separate method
+#TODO take into account service_id (calendar). right now, trips on weekend are double counted
+#     limit to trips where trip.service_id == 1
 
   def busline
-    zeroday = DateTime.parse('2015-11-29')
+    zeroday = DateTime.parse('2015-12-02')
 
     @whichRoute = params[:id]
     @whatHour = params[:time].to_i
@@ -34,7 +37,7 @@ class RoutesController < ApplicationController
 
   def busstops
     #zeroday is probably the day you seeded your DB
-    zeroday = DateTime.parse('2015-11-29')
+    zeroday = DateTime.parse('2015-12-02')
 
     @whichRoute = params[:id]
     @whatHour = params[:time].to_i
