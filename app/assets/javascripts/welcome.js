@@ -41,9 +41,9 @@ $(document).ready(function() {
   var path = d3.geo.path()
       .projection(projection);
 
-  svg.call(renderTiles, "highroad");
-  svg.call(renderStops, targetRouteLine, hour);
-  svg.call(renderRouteline, targetRouteLine, hour);
+  svg.call(renderTiles, "highroad")
+     .call(renderStops, targetRouteLine, hour)
+     .call(renderRouteline, targetRouteLine, hour);
 
   d3.select(window).on('resize', resize);
 
@@ -51,8 +51,8 @@ $(document).ready(function() {
   $('#draw').on('click', function () {
       $('.bus_route').remove();
       $('.bus_stop').remove();
-      svg.call(renderRouteline, $('#routeChooser').val(), $('#startHour').val());
-      svg.call(renderStops, $('#routeChooser').val(), $('#startHour').val());
+      svg.call(renderRouteline, $('#routeChooser').val(), $('#startHour').val())
+         .call(renderStops, $('#routeChooser').val(), $('#startHour').val());
     });
 
   function resize() {
