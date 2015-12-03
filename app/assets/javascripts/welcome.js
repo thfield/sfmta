@@ -76,7 +76,6 @@ $(document).ready(function() {
       .enter().append('circle').attr('class', 'bus_stop')
         .attr('r', function(d) { return Math.sqrt(d.num*2) })
         .attr('transform', function(d) { return 'translate(' + projection([d.lon,d.lat]) + ')'; });
-    logit(routeNum, hour);
   }
 
   function zoomed() {
@@ -147,11 +146,11 @@ $(document).ready(function() {
         route.call(renderRouteline, data);
         routelineData = data;
       })
+      logit($('#routeChooser').val(), $('#startHour').val());
   });
 
   // for help with development
   function logit(routeNum, hour){
-    // console.log('route: ' + routeNum + ' hr: ' + hour);
     console.log('busstops/'+ routeNum + '?time=' + hour);
   }
 })
