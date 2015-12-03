@@ -94,3 +94,9 @@ foo = Stop.where(id: StopTime.first.stop_id)[0]
 
 
 zeroday.change( { hour: 7} )
+
+curl "http://localhost:3000/busroute/{10867,1002,1003,1005,10974,1071,1110,1900,1010}?time=[1-23]" --output "route#1_h#2.json"
+curl "http://localhost:3000/busstops/{10867,1002,1003,1005,10974,1071,1110,1900,1010}?time=[1-23]" --output "stops#1_h#2.json"
+
+curl "http://localhost:3000/busstops/{10885}?time=[1-23]" --output "stops_#1_#2.json"
+curl "http://localhost:3000/busroute/{10885}?time=[1-23]" --output "route_#1_#2.json"

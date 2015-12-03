@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # resources :routes
   root 'welcome#index'
   get 'legal/' => 'welcome#legal'
+  get 'nodb/' => 'no_db#index'
 
   get 'busroute/:id' => 'routes#busline'
   get 'busstops/:id' => 'routes#busstops'

@@ -1,0 +1,61 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	background: #b0b0b0;
+  margin: 0;
+}
+
+path {
+  fill: none;
+  stroke: #000;
+}
+.container {
+	background: #fff;
+  margin: auto;
+  padding: 10px;
+  width: 960px;
+}
+
+.outline {
+  border: 1px solid #4b4b4b;
+}
+
+.bus_route {
+  stroke: #ba0000;
+  fill: none;
+  stroke-width: 3px;
+}
+
+.bus_stop {
+  stroke: #a22930;
+  fill: #ba0000;
+}
+
+.map {
+  position: relative;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+}
+
+.tile {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+
+  path {
+    fill: none;
+    stroke: #000;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .major_road { stroke: #444; }
+  .minor_road { stroke: #bbb; }
+  .highway { stroke: #001054; stroke-width: 1.5px; }
+  .rail { stroke: #007a14; }
+}
