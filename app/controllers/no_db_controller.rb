@@ -1,2 +1,0 @@
-class NoDbController < ApplicationController
-end

@@ -1,8 +1,0 @@
-{
-  "name": "dsl-generated dependencies",
-  "dependencies": {
-    "d3": "latest",
-    "topojson": "latest",
-    "tile": "https://raw.githubusercontent.com/d3/d3-plugins/master/geo/tile/tile.js"
-  }
-}
