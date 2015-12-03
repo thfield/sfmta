@@ -1,5 +1,7 @@
 # SFMTA Visualization
 ##Huh?
+Check out a [live version](thfield.github.io/sfmta) here that runs on a pre-computed dataset.
+
 This is a way to visualize the frequency of service to bus stops around the city:
 
 ![animated gif of 41 Union Bus](/public/img/41Union.gif)
