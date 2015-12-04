@@ -60,25 +60,21 @@ $(document).ready(function() {
         .style("width", width + "px")
         .style("height", height + "px");
 
-
-
   zoomed();
 
-  function renderRouteline(_, data){
-    _.append('path')
-      .datum(data)
-      .attr('d', routePath)
-      .attr('class', 'bus_route')
-  }
-
-  function renderStops(_, data){
-    _.selectAll('bus_stop')
-        .data(data)
-      .enter().append('circle').attr('class', 'bus_stop')
-        .attr('r', function(d) { return Math.sqrt(d.num*2) })
-        .attr('transform', function(d) { return 'translate(' + projection([d.lon,d.lat]) + ')'; })
-        .on("mouseover", highlight );
-  }
+  $('#draw').on('click', function () {
+    $('.bus_route').remove();
+    $('.bus_stop').remove();
+    d3.json('busstops/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
+      route.call(renderStops, data);
+      stopsData = data;
+    })
+    d3.json('busroute/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
+      route.call(renderRouteline, data);
+      routelineData = data;
+    })
+    logit($('#routeChooser').val(), $('#startHour').val());
+  });
 
   function zoomed() {
     var tiles = tile
@@ -89,8 +85,6 @@ $(document).ready(function() {
     projection
         .scale(zoom.scale() / 2 / Math.PI)
         .translate(zoom.translate());
-
-    // route.style(prefix + "transform", matrix3d(tiles.scale, tiles.translate))
 
     var image = layer
         .style(prefix + "transform", matrix3d(tiles.scale, tiles.translate))
@@ -122,13 +116,14 @@ $(document).ready(function() {
           });
         });
 
+    ttHide();
     d3.select('.bus_route').remove();
     d3.selectAll('.bus_stop').remove();
     route.call(renderRouteline, routelineData)
          .call(renderStops, stopsData);
   }
 
-  function matrix3d(scale, translate) {
+function matrix3d(scale, translate) {
     var k = scale / 256, r = scale % 1 ? Number : Math.round;
     return "matrix3d(" + [k, 0, 0, 0, 0, k, 0, 0, 0, 0, k, 0, r(translate[0] * scale), r(translate[1] * scale), 0, 1 ] + ")";
   }
@@ -139,22 +134,30 @@ $(document).ready(function() {
     return "";
   }
 
-  $('#draw').on('click', function () {
-    $('.bus_route').remove();
-    $('.bus_stop').remove();
-    d3.json('busstops/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
-      route.call(renderStops, data);
-      stopsData = data;
-    })
-    d3.json('busroute/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
-      route.call(renderRouteline, data);
-      routelineData = data;
-    })
-    logit($('#routeChooser').val(), $('#startHour').val());
-  });
+  function renderRouteline(_, data){
+    _.append('path')
+      .datum(data)
+      .attr('d', routePath)
+      .attr('class', 'bus_route')
+  }
 
-  // for help with development
+  function renderStops(_, data){
+    _.selectAll('bus_stop')
+        .data(data)
+      .enter().append('circle').attr('class', 'bus_stop')
+        .attr('r', function(d) { return Math.sqrt(d.num*2) })
+        .attr('transform', function(d) { return 'translate(' + projection([d.lon,d.lat]) + ')'; })
+        .on('mouseover', function(d) {
+            var el = d3.select(this)
+            ttFollow(el,d.num);
+          })
+          .on('mouseout', function(d){
+            ttHide();
+          });
+  }
+
   function logit(routeNum, hour){
+    // for help with development
     console.log('busstops/'+ routeNum + '?time=' + hour);
   }
 
@@ -162,5 +165,22 @@ $(document).ready(function() {
     var me = d3.select(this),
         thisData = me.datum();
     console.log(thisData);
+  }
+
+  function ttFollow(element, caption, options) {
+    element.on('mousemove', null);
+    element.on('mousemove', function() {
+      var position = d3.mouse(document.body);
+      d3.select('#tooltip')
+        .style('top', ( (position[1] + 30)) + "px")
+        .style('left', ( position[0]) + "px")
+        .select('#tooltip .value')
+        .text(caption);
+    });
+    d3.select('#tooltip').classed('hidden', false);
+  };
+
+  function ttHide() {
+    d3.select('#tooltip').classed('hidden', true);
   }
 })
