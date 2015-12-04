@@ -1,2 +1,109 @@
 body{background-color:#fff;color:#333;font-family:helvetica, arial, sans-serif;font-size:13px;line-height:18px}p,ol,ul,td{font-family:helvetica, arial, sans-serif;font-size:13px;line-height:18px}pre{background-color:#eee;padding:10px;font-size:11px}a{color:#000}a:visited{color:#666}a:hover{color:#fff;background-color:#000}div.field,div.actions{margin-bottom:10px}#notice{color:green}.field_with_errors{padding:2px;background-color:red;display:table}#error_explanation{width:450px;border:2px solid red;padding:7px;padding-bottom:0;margin-bottom:20px;background-color:#f0f0f0}#error_explanation h2{text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:12px;margin:-7px;margin-bottom:0px;background-color:#c00;color:#fff}#error_explanation ul li{font-size:12px;list-style:square}
-body{background:#b0b0b0;margin:0}path{fill:none;stroke:#000}.container{background:#fff;margin:auto;padding:10px;width:960px}.outline{border:1px solid #4b4b4b}.bus_route{stroke:#ba0000;fill:none;stroke-width:3px}.bus_stop{stroke:#a22930;fill:#ba0000}.map{position:relative;overflow:hidden}.layer{position:absolute}.tile{position:absolute;width:256px;height:256px}.tile path{fill:none;stroke:#000;stroke-linejoin:round;stroke-linecap:round}.tile .major_road{stroke:#444}.tile .minor_road{stroke:#bbb}.tile .highway{stroke:#001054;stroke-width:1.5px}.tile .rail{stroke:#007a14}
+/* line 5, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+body {
+  /* background: #000000; */
+  margin: 0;
+}
+
+/* line 10, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+path {
+  fill: none;
+  stroke: #000;
+}
+
+/* line 15, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.hidden {
+  display: none;
+}
+
+/* line 19, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.container {
+  margin: auto;
+  padding: 10px;
+  width: 960px;
+}
+
+/* line 25, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.outline {
+  border: 1px solid #4b4b4b;
+}
+
+/* line 29, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.bus_route {
+  stroke: #ba0000;
+  fill: none;
+  stroke-width: 3px;
+}
+
+/* line 35, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.bus_stop {
+  stroke: #a22930;
+  fill: #ba0000;
+}
+
+/* line 40, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.map {
+  position: relative;
+  overflow: hidden;
+}
+
+/* line 45, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.route {
+  position: absolute;
+}
+
+/* line 49, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.layer {
+  position: absolute;
+}
+
+/* line 53, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+#tooltip {
+  position: absolute;
+  /*width: 200px;*/
+  height: auto;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+/* line 64, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+#tooltip span {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+/* line 71, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.tile {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+}
+/* line 76, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.tile path {
+  fill: none;
+  stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+/* line 83, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.tile .major_road {
+  stroke: #444;
+}
+/* line 84, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.tile .minor_road {
+  stroke: #bbb;
+}
+/* line 85, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.tile .highway {
+  stroke: #001054;
+  stroke-width: 1.5px;
+}
+/* line 86, /Users/tyler/www/sfmta/app/assets/stylesheets/welcome.scss */
+.tile .rail {
+  stroke: #007a14;
+}
