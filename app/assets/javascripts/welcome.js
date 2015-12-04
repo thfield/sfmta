@@ -100,7 +100,7 @@ $(document).ready(function() {
         .style("left", function(d) { return d[0] * 256 + "px"; })
         .style("top", function(d) { return d[1] * 256 + "px"; })
         .each(function(d) {
-          var svg = d3.select(this);
+          var svg = d3.select(this);        // vectiles- ['highroad','water-areas','skeletron']
           this._xhr = d3.json("http://" + ["a", "b", "c"][(d[0] * 31 + d[1]) % 3] + ".tile.openstreetmap.us/vectiles-highroad/" + d[2] + "/" + d[0] + "/" + d[1] + ".json", function(error, json) {
             var k = Math.pow(2, d[2]) * 256; // size of the world in pixels
 
