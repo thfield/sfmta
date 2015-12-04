@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'legal/' => 'welcome#legal'
   get 'nodb/' => 'no_db#index'
 
-  get 'busroute/:id' => 'routes#busline'
+  get 'busroute/:id' => 'routes#busroute'
   get 'busstops/:id' => 'routes#busstops'
 
   # The priority is based upon order of creation: first created -> highest priority.
