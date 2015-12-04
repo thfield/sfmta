@@ -49,17 +49,18 @@ $(document).ready(function() {
       .style("height", height + "px")
       .call(zoom);
 
-  var layer = map.append("div")
-      .attr("class", "layer");
-
   var routePath = d3.geo.path()
       .projection(projection);
 
-  var route = map.append("div")
-      .attr("class", "route")
-        .append('svg')
+  var layer = map.append("div")
+        .attr("class", "layer");
+
+  var route = map.append('svg')
+        .attr("class", "route")
         .style("width", width + "px")
         .style("height", height + "px");
+
+
 
   zoomed();
 
@@ -75,7 +76,8 @@ $(document).ready(function() {
         .data(data)
       .enter().append('circle').attr('class', 'bus_stop')
         .attr('r', function(d) { return Math.sqrt(d.num*2) })
-        .attr('transform', function(d) { return 'translate(' + projection([d.lon,d.lat]) + ')'; });
+        .attr('transform', function(d) { return 'translate(' + projection([d.lon,d.lat]) + ')'; })
+        .on("mouseover", highlight );
   }
 
   function zoomed() {
@@ -87,6 +89,8 @@ $(document).ready(function() {
     projection
         .scale(zoom.scale() / 2 / Math.PI)
         .translate(zoom.translate());
+
+    // route.style(prefix + "transform", matrix3d(tiles.scale, tiles.translate))
 
     var image = layer
         .style(prefix + "transform", matrix3d(tiles.scale, tiles.translate))
@@ -136,21 +140,27 @@ $(document).ready(function() {
   }
 
   $('#draw').on('click', function () {
-      $('.bus_route').remove();
-      $('.bus_stop').remove();
-      d3.json('busstops/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
-        route.call(renderStops, data);
-        stopsData = data;
-      })
-      d3.json('busroute/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
-        route.call(renderRouteline, data);
-        routelineData = data;
-      })
-      logit($('#routeChooser').val(), $('#startHour').val());
+    $('.bus_route').remove();
+    $('.bus_stop').remove();
+    d3.json('busstops/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
+      route.call(renderStops, data);
+      stopsData = data;
+    })
+    d3.json('busroute/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
+      route.call(renderRouteline, data);
+      routelineData = data;
+    })
+    logit($('#routeChooser').val(), $('#startHour').val());
   });
 
   // for help with development
   function logit(routeNum, hour){
     console.log('busstops/'+ routeNum + '?time=' + hour);
+  }
+
+  function highlight(){
+    var me = d3.select(this),
+        thisData = me.datum();
+    console.log(thisData);
   }
 })
