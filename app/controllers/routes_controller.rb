@@ -1,39 +1,50 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:busroute, :busstops]
-#TODO take into account service_id (calendar). right now, trips on weekend are double counted
-#     limit to trips where trip.service_id == 1
 
   def busroute
-    shapesFromMyRoute = Trip.includes(:shapes).where(id: @stopsOnMyRoute.first.trip_id)[0].shapes
+    # shapesFromMyRoute = Trip.includes(:shapes).where(id: @stoptimesOnMyRoute.first.trip_id)[0].shapes
+    # inbound_trip = @stoptimesOnMyRoute.where(:trips => {direction_id: 0}).first
+    # outbound_trip = @stoptimesOnMyRoute.where(:trips => {direction_id: 1}).first
 
-    coordinates = Array.new
-    shapesFromMyRoute.each do |shape|
-      temp = [shape.shape_pt_lon.to_f,shape.shape_pt_lat.to_f]
-      coordinates.push(temp)
+    distinct_trip_ids = @stoptimesOnMyRoute.map(&:trip_id).uniq
+    distinct_shape_nums_from_myRoutes = Trip.where(id: distinct_trip_ids).map(&:shape_id).uniq
+    # distinct_shapes_from_myRoutes = Trip.where(id: distinct_trip_ids).select(:shape_id).distinct
+    features = Array.new
+    distinct_shape_nums_from_myRoutes.each do |pathway|
+      shapes_on_pathway = Shape.where(shape_num: pathway)
+      coordinates = Array.new
+      shapes_on_pathway.each do |point|
+        temp = [point.shape_pt_lon.to_f,point.shape_pt_lat.to_f]
+        coordinates.push(temp)
+      end
+      features.push({
+        'type'=>'Feature',
+        'properties' => {
+          'route' => @whichRoute,
+          'time' => @whatHour
+        },
+        'geometry' => {'type' => 'LineString',
+                       'coordinates' => coordinates
+                      }
+      })
     end
-
     @returndata = {
-      'type'=>'Feature',
-      'properties' => {
-        'route' => @whichRoute,
-        'time' => @whatHour
-      },
-      'geometry' => {'type' => 'LineString',
-                     'coordinates' => coordinates
-                    }
+    "type" => "FeatureCollection",
+    "features" => features
     }
+
     render json: @returndata
     # render html: @whatHour
   end
 
   def busstops
-    myStops = @stopsOnMyRoute.uniq.pluck(:stop_id)
+    myStops = @stoptimesOnMyRoute.uniq.pluck(:stop_id)
     @data = Array.new
 
     myStops.each do |stop|
       temp = Hash.new
       foo = Stop.where(id: stop)[0]
-      temp['num'] = @stopsOnMyRoute.where(stop_id: stop).length
+      temp['num'] = @stoptimesOnMyRoute.where(stop_id: stop).length
       temp['lon'] = foo.stop_lon.to_f
       temp['lat'] = foo.stop_lat.to_f
       @data.push(temp)
@@ -53,13 +64,18 @@ class RoutesController < ApplicationController
       @whichRoute = params[:id]
       @whatHour = params[:time].to_i
 
+      # @whichRoute = 10891
+      # @whatHour = 12
+
       # @myRoute = Route.where(id: @whichRoute)[0]
       allStops = StopTime.includes({trip: :route}, :stop).where( arrival_time: (zeroday.change( { hour: @whatHour } )..zeroday.change( { hour: @whatHour + 1 } )) )
       myRoutesTrips = Array.new
-      Trip.where(route_id: @whichRoute).each do |trip|
+      #only look at trips that happen on the weekdays (serivce_id == 1)
+      Trip.where(route_id: @whichRoute, service_id: 1).each do |trip|
         myRoutesTrips.push(trip.id)
       end
-      @stopsOnMyRoute = allStops.where(trip_id: myRoutesTrips)
+
+      @stoptimesOnMyRoute = allStops.where(trip_id: myRoutesTrips)
 
     end
 
