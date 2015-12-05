@@ -10,6 +10,8 @@ body {
 path {
   fill: none;
   stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 
 .container {
@@ -25,10 +27,6 @@ path {
 
 .outline {
   border: 1px solid #4b4b4b;
-}
-
-.bus_route {
-  fill: none;
 }
 
 .map {
@@ -67,117 +65,116 @@ path {
   width: 256px;
   height: 256px;
 
-  path {
-    fill: none;
-    stroke: #000;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-  }
-
   .major_road { stroke: #444; }
   .minor_road { stroke: #bbb; }
-  .highway { stroke: #001054; stroke-width: 1.5px; }
-  .rail { stroke: #007a14; }
+  .highway { stroke: #737373; stroke-width: 1.5px; }
+  .rail { stroke: #808285; }
 }
 
-
-.route-10867 { stroke: #0077ba; }
-.route-1033 { stroke: #ba0000; }
-.route-1034 { stroke: #ba0000; }
-.route-1002 { stroke: #0077ba; }
-.route-1003 { stroke: #0077ba; }
-.route-1005 { stroke: #0077ba; }
-.route-1055 { stroke: #ba0000; }
-.route-10974 { stroke: #0077ba; }
-.route-1071 { stroke: #0077ba; }
-.route-1072 { stroke: #ba0000; }
-.route-10874 { stroke: #ba0000; }
-.route-1110 { stroke: #0077ba; }
-.route-1108 { stroke: #ba0000; }
-.route-1109 { stroke: #ba0000; }
-.route-1900 { stroke: #0077ba; }
-.route-1901 { stroke: #ba0000; }
-.route-1010 { stroke: #0077ba; }
-.route-1012 { stroke: #0077ba; }
-.route-10879 { stroke: #0077ba; }
-.route-10880 { stroke: #ba0000; }
-.route-10881 { stroke: #ba0000; }
-.route-10882 { stroke: #0077ba; }
-.route-10883 { stroke: #0077ba; }
-.route-10884 { stroke: #0077ba; }
-.route-10885 { stroke: #0077ba; }
-.route-10886 { stroke: #0077ba; }
-.route-10887 { stroke: #0077ba; }
-.route-10888 { stroke: #0077ba; }
-.route-10889 { stroke: #0077ba; }
-.route-1028 { stroke: #0077ba; }
-.route-10986 { stroke: #ba0000; }
-.route-10891 { stroke: #0077ba; }
-.route-1030 { stroke: #0077ba; }
-.route-10893 { stroke: #ba0000; }
-.route-10894 { stroke: #0077ba; }
-.route-1031 { stroke: #ba0000; }
-.route-1032 { stroke: #ba0000; }
-.route-10895 { stroke: #0077ba; }
-.route-10896 { stroke: #0077ba; }
-.route-10897 { stroke: #0077ba; }
-.route-10898 { stroke: #0077ba; }
-.route-10899 { stroke: #0077ba; }
-.route-1038 { stroke: #ba0000; }
-.route-1039 { stroke: #ba0000; }
-.route-10900 { stroke: #ba0000; }
-.route-10901 { stroke: #0077ba; }
-.route-10902 { stroke: #0077ba; }
-.route-10903 { stroke: #0077ba; }
-.route-10904 { stroke: #0077ba; }
-.route-1045 { stroke: #0077ba; }
-.route-10906 { stroke: #0077ba; }
-.route-10907 { stroke: #0077ba; }
-.route-10908 { stroke: #0077ba; }
-.route-10909 { stroke: #0077ba; }
-.route-10910 { stroke: #0077ba; }
-.route-10911 { stroke: #0077ba; }
-.route-10912 { stroke: #0077ba; }
-.route-10913 { stroke: #0077ba; }
-.route-10917 { stroke: #0077ba; }
-.route-10918 { stroke: #0077ba; }
-.route-10919 { stroke: #ba0000; }
-.route-1081 { stroke: #ba0000; }
-.route-1082 { stroke: #ba0000; }
-.route-10921 { stroke: #ba0000; }
-.route-10922 { stroke: #0077ba; }
-.route-10923 { stroke: #0077ba; }
-.route-10924 { stroke: #0077ba; }
-.route-11029 { stroke: #349500; }
-.route-10928 { stroke: #349500; }
-.route-1094 { stroke: #349500; }
-.route-1196 { stroke: #349500; }
-.route-1198 { stroke: #349500; }
-.route-1199 { stroke: #349500; }
-.route-1093 { stroke: #349500; }
-.route-10938 { stroke: #349500; }
-.route-1197 { stroke: #349500; }
-.route-1102 { stroke: #2e5917; }
-.route-1103 { stroke: #2e5917; }
-.route-1104 { stroke: #2e5917; }
-.route-1105 { stroke: #2e5917; }
-.route-1106 { stroke: #2e5917; }
-.route-11030 { stroke: #0077ba; }
-.route-1060 { stroke: #ba4e00; }
-.route-1059 { stroke: #ba4e00; }
-.route-10916 { stroke: #ba4e00; }
-
-.freq-1 { stroke-width: 1px; }
-.freq-2 { stroke-width: 1px; }
+.freq-1 { stroke-width: 1.5px; }
+.freq-2 { stroke-width: 1.5px; }
 .freq-3 { stroke-width: 2px; }
-.freq-4 { stroke-width: 2px; }
-.freq-5 { stroke-width: 2px; }
-.freq-6 { stroke-width: 3px; }
-.freq-7 { stroke-width: 3px; }
-.freq-8 { stroke-width: 3px; }
-.freq-9 { stroke-width: 4px; }
-.freq-10 { stroke-width: 4px; }
-.freq-11 { stroke-width: 4px; }
-.freq-12 { stroke-width: 5px; }
-.freq-13 { stroke-width: 5px; }
-.freq-14 { stroke-width: 5px; }
+.freq-4 { stroke-width: 3px; }
+.freq-5 { stroke-width: 4px; }
+.freq-6 { stroke-width: 5px; }
+.freq-7 { stroke-width: 6px; }
+.freq-8 { stroke-width: 6px; }
+.freq-9 { stroke-width: 6px; }
+.freq-10 { stroke-width: 6px; }
+.freq-11 { stroke-width: 6px; }
+.freq-12 { stroke-width: 6px; }
+.freq-13 { stroke-width: 6px; }
+.freq-14 { stroke-width: 6px; }
+
+$munimetro: #c4074e;
+$express: 	#005595;
+$rapid: 		#0080c1;
+$bus: 			#569bbe;
+$cablecar: 	#e7a614;
+$owl: 			#6f0000;
+
+.route-10867 { stroke: $bus; }
+.route-1033 { stroke: $express; }
+.route-1034 { stroke: $express; }
+.route-1002 { stroke: $bus; }
+.route-1003 { stroke: $bus; }
+.route-1005 { stroke: $bus; }
+.route-1055 { stroke: $rapid; }
+.route-10974 { stroke: $bus; }
+.route-1071 { stroke: $bus; }
+.route-1072 { stroke: $rapid; }
+.route-10874 { stroke: $express; }
+.route-1110 { stroke: $bus; }
+.route-1108 { stroke: $express; }
+.route-1109 { stroke: $express; }
+.route-1900 { stroke: $bus; }
+.route-1901 { stroke: $rapid; }
+.route-1010 { stroke: $bus; }
+.route-1012 { stroke: $bus; }
+.route-10879 { stroke: $bus; }
+.route-10880 { stroke: $rapid; }
+.route-10881 { stroke: $express; }
+.route-10882 { stroke: $bus; }
+.route-10883 { stroke: $bus; }
+.route-10884 { stroke: $bus; }
+.route-10885 { stroke: $bus; }
+.route-10886 { stroke: $bus; }
+.route-10887 { stroke: $bus; }
+.route-10888 { stroke: $bus; }
+.route-10889 { stroke: $bus; }
+.route-1028 { stroke: $bus; }
+.route-10986 { stroke: $rapid; }
+.route-10891 { stroke: $bus; }
+.route-1030 { stroke: $bus; }
+.route-10893 { stroke: $express; }
+.route-10894 { stroke: $bus; }
+.route-1031 { stroke: $express; }
+.route-1032 { stroke: $express; }
+.route-10895 { stroke: $bus; }
+.route-10896 { stroke: $bus; }
+.route-10897 { stroke: $bus; }
+.route-10898 { stroke: $bus; }
+.route-10899 { stroke: $bus; }
+.route-1038 { stroke: $express; }
+.route-1039 { stroke: $express; }
+.route-10900 { stroke: $rapid; }
+.route-10901 { stroke: $bus; }
+.route-10902 { stroke: $bus; }
+.route-10903 { stroke: $bus; }
+.route-10904 { stroke: $bus; }
+.route-1045 { stroke: $bus; }
+.route-10906 { stroke: $bus; }
+.route-10907 { stroke: $bus; }
+.route-10908 { stroke: $bus; }
+.route-10909 { stroke: $bus; }
+.route-10910 { stroke: $bus; }
+.route-10911 { stroke: $bus; }
+.route-10912 { stroke: $bus; }
+.route-10913 { stroke: $bus; }
+.route-10917 { stroke: $bus; }
+.route-10918 { stroke: $bus; }
+.route-10919 { stroke: $express; }
+.route-1081 { stroke: $express; }
+.route-1082 { stroke: $express; }
+.route-10921 { stroke: $express; }
+.route-10922 { stroke: $bus; }
+.route-10923 { stroke: $bus; }
+.route-10924 { stroke: $bus; }
+.route-11029 { stroke: $munimetro; }
+.route-10928 { stroke: $owl; }
+.route-1094 { stroke: $munimetro; }
+.route-1196 { stroke: $munimetro; }
+.route-1198 { stroke: $munimetro; }
+.route-1199 { stroke: $munimetro; }
+.route-1093 { stroke: $munimetro; }
+.route-10938 { stroke: $munimetro; }
+.route-1197 { stroke: $munimetro; }
+.route-1102 { stroke: $owl; }
+.route-1103 { stroke: $owl; }
+.route-1104 { stroke: $owl; }
+.route-1105 { stroke: $owl; }
+.route-1106 { stroke: $owl; }
+.route-11030 { stroke: $bus; }
+.route-1060 { stroke: $cablecar; }
+.route-1059 { stroke: $cablecar; }
+.route-10916 { stroke: $cablecar; }

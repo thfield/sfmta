@@ -184,8 +184,8 @@ $(document).ready(function() {
       var position = d3.mouse(document.body);
       d3.select('#tooltip')
         .style('top', ( (position[1] + 30)) + "px")
-        .style('left', ( position[0]) + "px")
-        .select('#tooltip .value')
+        .style('left', ( position[0]) + "px");
+      d3.select('#tooltip .value')
         .text(caption);
     });
     d3.select('#tooltip').classed('hidden', false);
