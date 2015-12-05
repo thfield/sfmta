@@ -1,34 +1,28 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 body {
-	background: #b0b0b0;
+  background: #b0b0b0;
   margin: 0;
 }
 
 path {
   fill: none;
   stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 
 .container {
-	background: #fff;
+  background: #fff;
   margin: auto;
   padding: 10px;
   width: 960px;
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
 
 .outline {
   border: 1px solid #4b4b4b;
-}
-
-.bus_route {
-  fill: none;
 }
 
 .map {
@@ -67,117 +61,412 @@ path {
   width: 256px;
   height: 256px;
 }
-.tile path {
-    fill: none;
-    stroke: #000;
-    stroke-linejoin: round;
-    stroke-linecap: round;
+.tile .major_road {
+  stroke: #444;
+}
+.tile .minor_road {
+  stroke: #bbb;
+}
+.tile .highway {
+  stroke: #737373;
+  stroke-width: 1.5px;
+}
+.tile .rail {
+  stroke: #808285;
 }
 
-.tile .major_road { stroke: #444; }
-.tile .minor_road { stroke: #bbb; }
-.tile .highway { stroke: #001054; stroke-width: 1.5px; }
-.tile .rail { stroke: #007a14; }
+.freq-1 {
+  stroke-width: 1.5px;
+}
 
+.freq-2 {
+  stroke-width: 1.5px;
+}
 
+.freq-3 {
+  stroke-width: 2px;
+}
 
-.route-10867 { stroke: #0077ba; }
-.route-1033 { stroke: #ba0000; }
-.route-1034 { stroke: #ba0000; }
-.route-1002 { stroke: #0077ba; }
-.route-1003 { stroke: #0077ba; }
-.route-1005 { stroke: #0077ba; }
-.route-1055 { stroke: #ba0000; }
-.route-10974 { stroke: #0077ba; }
-.route-1071 { stroke: #0077ba; }
-.route-1072 { stroke: #ba0000; }
-.route-10874 { stroke: #ba0000; }
-.route-1110 { stroke: #0077ba; }
-.route-1108 { stroke: #ba0000; }
-.route-1109 { stroke: #ba0000; }
-.route-1900 { stroke: #0077ba; }
-.route-1901 { stroke: #ba0000; }
-.route-1010 { stroke: #0077ba; }
-.route-1012 { stroke: #0077ba; }
-.route-10879 { stroke: #0077ba; }
-.route-10880 { stroke: #ba0000; }
-.route-10881 { stroke: #ba0000; }
-.route-10882 { stroke: #0077ba; }
-.route-10883 { stroke: #0077ba; }
-.route-10884 { stroke: #0077ba; }
-.route-10885 { stroke: #0077ba; }
-.route-10886 { stroke: #0077ba; }
-.route-10887 { stroke: #0077ba; }
-.route-10888 { stroke: #0077ba; }
-.route-10889 { stroke: #0077ba; }
-.route-1028 { stroke: #0077ba; }
-.route-10986 { stroke: #ba0000; }
-.route-10891 { stroke: #0077ba; }
-.route-1030 { stroke: #0077ba; }
-.route-10893 { stroke: #ba0000; }
-.route-10894 { stroke: #0077ba; }
-.route-1031 { stroke: #ba0000; }
-.route-1032 { stroke: #ba0000; }
-.route-10895 { stroke: #0077ba; }
-.route-10896 { stroke: #0077ba; }
-.route-10897 { stroke: #0077ba; }
-.route-10898 { stroke: #0077ba; }
-.route-10899 { stroke: #0077ba; }
-.route-1038 { stroke: #ba0000; }
-.route-1039 { stroke: #ba0000; }
-.route-10900 { stroke: #ba0000; }
-.route-10901 { stroke: #0077ba; }
-.route-10902 { stroke: #0077ba; }
-.route-10903 { stroke: #0077ba; }
-.route-10904 { stroke: #0077ba; }
-.route-1045 { stroke: #0077ba; }
-.route-10906 { stroke: #0077ba; }
-.route-10907 { stroke: #0077ba; }
-.route-10908 { stroke: #0077ba; }
-.route-10909 { stroke: #0077ba; }
-.route-10910 { stroke: #0077ba; }
-.route-10911 { stroke: #0077ba; }
-.route-10912 { stroke: #0077ba; }
-.route-10913 { stroke: #0077ba; }
-.route-10917 { stroke: #0077ba; }
-.route-10918 { stroke: #0077ba; }
-.route-10919 { stroke: #ba0000; }
-.route-1081 { stroke: #ba0000; }
-.route-1082 { stroke: #ba0000; }
-.route-10921 { stroke: #ba0000; }
-.route-10922 { stroke: #0077ba; }
-.route-10923 { stroke: #0077ba; }
-.route-10924 { stroke: #0077ba; }
-.route-11029 { stroke: #349500; }
-.route-10928 { stroke: #349500; }
-.route-1094 { stroke: #349500; }
-.route-1196 { stroke: #349500; }
-.route-1198 { stroke: #349500; }
-.route-1199 { stroke: #349500; }
-.route-1093 { stroke: #349500; }
-.route-10938 { stroke: #349500; }
-.route-1197 { stroke: #349500; }
-.route-1102 { stroke: #2e5917; }
-.route-1103 { stroke: #2e5917; }
-.route-1104 { stroke: #2e5917; }
-.route-1105 { stroke: #2e5917; }
-.route-1106 { stroke: #2e5917; }
-.route-11030 { stroke: #0077ba; }
-.route-1060 { stroke: #ba4e00; }
-.route-1059 { stroke: #ba4e00; }
-.route-10916 { stroke: #ba4e00; }
+.freq-4 {
+  stroke-width: 3px;
+}
 
-.freq-1 { stroke-width: 1px; }
-.freq-2 { stroke-width: 1px; }
-.freq-3 { stroke-width: 2px; }
-.freq-4 { stroke-width: 2px; }
-.freq-5 { stroke-width: 2px; }
-.freq-6 { stroke-width: 3px; }
-.freq-7 { stroke-width: 3px; }
-.freq-8 { stroke-width: 3px; }
-.freq-9 { stroke-width: 4px; }
-.freq-10 { stroke-width: 4px; }
-.freq-11 { stroke-width: 4px; }
-.freq-12 { stroke-width: 5px; }
-.freq-13 { stroke-width: 5px; }
-.freq-14 { stroke-width: 5px; }
+.freq-5 {
+  stroke-width: 4px;
+}
+
+.freq-6 {
+  stroke-width: 5px;
+}
+
+.freq-7 {
+  stroke-width: 6px;
+}
+
+.freq-8 {
+  stroke-width: 6px;
+}
+
+.freq-9 {
+  stroke-width: 6px;
+}
+
+.freq-10 {
+  stroke-width: 6px;
+}
+
+.freq-11 {
+  stroke-width: 6px;
+}
+
+.freq-12 {
+  stroke-width: 6px;
+}
+
+.freq-13 {
+  stroke-width: 6px;
+}
+
+.freq-14 {
+  stroke-width: 6px;
+}
+
+.route-10867 {
+  stroke: #569bbe;
+}
+
+.route-1033 {
+  stroke: #005595;
+}
+
+.route-1034 {
+  stroke: #005595;
+}
+
+.route-1002 {
+  stroke: #569bbe;
+}
+
+.route-1003 {
+  stroke: #569bbe;
+}
+
+.route-1005 {
+  stroke: #569bbe;
+}
+
+.route-1055 {
+  stroke: #0080c1;
+}
+
+.route-10974 {
+  stroke: #569bbe;
+}
+
+.route-1071 {
+  stroke: #569bbe;
+}
+
+.route-1072 {
+  stroke: #0080c1;
+}
+
+.route-10874 {
+  stroke: #005595;
+}
+
+.route-1110 {
+  stroke: #569bbe;
+}
+
+.route-1108 {
+  stroke: #005595;
+}
+
+.route-1109 {
+  stroke: #005595;
+}
+
+.route-1900 {
+  stroke: #569bbe;
+}
+
+.route-1901 {
+  stroke: #0080c1;
+}
+
+.route-1010 {
+  stroke: #569bbe;
+}
+
+.route-1012 {
+  stroke: #569bbe;
+}
+
+.route-10879 {
+  stroke: #569bbe;
+}
+
+.route-10880 {
+  stroke: #0080c1;
+}
+
+.route-10881 {
+  stroke: #005595;
+}
+
+.route-10882 {
+  stroke: #569bbe;
+}
+
+.route-10883 {
+  stroke: #569bbe;
+}
+
+.route-10884 {
+  stroke: #569bbe;
+}
+
+.route-10885 {
+  stroke: #569bbe;
+}
+
+.route-10886 {
+  stroke: #569bbe;
+}
+
+.route-10887 {
+  stroke: #569bbe;
+}
+
+.route-10888 {
+  stroke: #569bbe;
+}
+
+.route-10889 {
+  stroke: #569bbe;
+}
+
+.route-1028 {
+  stroke: #569bbe;
+}
+
+.route-10986 {
+  stroke: #0080c1;
+}
+
+.route-10891 {
+  stroke: #569bbe;
+}
+
+.route-1030 {
+  stroke: #569bbe;
+}
+
+.route-10893 {
+  stroke: #005595;
+}
+
+.route-10894 {
+  stroke: #569bbe;
+}
+
+.route-1031 {
+  stroke: #005595;
+}
+
+.route-1032 {
+  stroke: #005595;
+}
+
+.route-10895 {
+  stroke: #569bbe;
+}
+
+.route-10896 {
+  stroke: #569bbe;
+}
+
+.route-10897 {
+  stroke: #569bbe;
+}
+
+.route-10898 {
+  stroke: #569bbe;
+}
+
+.route-10899 {
+  stroke: #569bbe;
+}
+
+.route-1038 {
+  stroke: #005595;
+}
+
+.route-1039 {
+  stroke: #005595;
+}
+
+.route-10900 {
+  stroke: #0080c1;
+}
+
+.route-10901 {
+  stroke: #569bbe;
+}
+
+.route-10902 {
+  stroke: #569bbe;
+}
+
+.route-10903 {
+  stroke: #569bbe;
+}
+
+.route-10904 {
+  stroke: #569bbe;
+}
+
+.route-1045 {
+  stroke: #569bbe;
+}
+
+.route-10906 {
+  stroke: #569bbe;
+}
+
+.route-10907 {
+  stroke: #569bbe;
+}
+
+.route-10908 {
+  stroke: #569bbe;
+}
+
+.route-10909 {
+  stroke: #569bbe;
+}
+
+.route-10910 {
+  stroke: #569bbe;
+}
+
+.route-10911 {
+  stroke: #569bbe;
+}
+
+.route-10912 {
+  stroke: #569bbe;
+}
+
+.route-10913 {
+  stroke: #569bbe;
+}
+
+.route-10917 {
+  stroke: #569bbe;
+}
+
+.route-10918 {
+  stroke: #569bbe;
+}
+
+.route-10919 {
+  stroke: #005595;
+}
+
+.route-1081 {
+  stroke: #005595;
+}
+
+.route-1082 {
+  stroke: #005595;
+}
+
+.route-10921 {
+  stroke: #005595;
+}
+
+.route-10922 {
+  stroke: #569bbe;
+}
+
+.route-10923 {
+  stroke: #569bbe;
+}
+
+.route-10924 {
+  stroke: #569bbe;
+}
+
+.route-11029 {
+  stroke: #c4074e;
+}
+
+.route-10928 {
+  stroke: #6f0000;
+}
+
+.route-1094 {
+  stroke: #c4074e;
+}
+
+.route-1196 {
+  stroke: #c4074e;
+}
+
+.route-1198 {
+  stroke: #c4074e;
+}
+
+.route-1199 {
+  stroke: #c4074e;
+}
+
+.route-1093 {
+  stroke: #c4074e;
+}
+
+.route-10938 {
+  stroke: #c4074e;
+}
+
+.route-1197 {
+  stroke: #c4074e;
+}
+
+.route-1102 {
+  stroke: #6f0000;
+}
+
+.route-1103 {
+  stroke: #6f0000;
+}
+
+.route-1104 {
+  stroke: #6f0000;
+}
+
+.route-1105 {
+  stroke: #6f0000;
+}
+
+.route-1106 {
+  stroke: #6f0000;
+}
+
+.route-11030 {
+  stroke: #569bbe;
+}
+
+.route-1060 {
+  stroke: #e7a614;
+}
+
+.route-1059 {
+  stroke: #e7a614;
+}
+
+.route-10916 {
+  stroke: #e7a614;
+}
