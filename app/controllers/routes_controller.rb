@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :set_route, only: [:busroute, :busstops]
+  before_action :set_route, only: [:busroute, :busstops, :frequency]
 
   def busroute
     # shapesFromMyRoute = Trip.includes(:shapes).where(id: @stoptimesOnMyRoute.first.trip_id)[0].shapes
@@ -50,6 +50,19 @@ class RoutesController < ApplicationController
       @data.push(temp)
     end
 
+    render json: @data
+  end
+
+  def frequency
+    myStops = @stoptimesOnMyRoute.uniq.pluck(:stop_id)
+    frequencies = Array.new
+
+    myStops.each do |stop|
+      frequencies.push( @stoptimesOnMyRoute.where(stop_id: stop).length )
+    end
+    stopavg = frequencies.inject{ |sum, el| sum + el }.to_f / frequencies.size
+
+    @data = {'route'=>@whichRoute, 'avg'=> stopavg.floor}
     render json: @data
   end
 
