@@ -11,20 +11,13 @@
 
   <div class="container">
     <p>
-      Bus Stops (red circles) are sized by the number of times a bus on the selected route stops at that bus stop in the hour after the selected hour.
-    </p>
-    <p>
       You can click and drag to pan the map and you can zoom using the mouse wheel.
     </p>
-    <p>
-      This page loads a small group of buslines that are precompiled so no database is needed.
-    </p>
+
   </div>
 
   <div class="container outline">
     <form oninput="readout.value = time.valueAsNumber">
-      <label for="routeChooser">Bus Route:</label>
-      <select id='routeChooser'><select>
       <label for="time">Hour:</label>
       <output for="startHour" name="readout">12</output>
       <input name="time" type="range" id="startHour" value="12" min="1" max="24" step="1">
