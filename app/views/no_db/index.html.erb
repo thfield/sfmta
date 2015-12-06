@@ -1,31 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-  <p>
-    This page loads a smaller group of buslines that are precompiled so no database is needed.
-  </p>
-  <p>
-    Bus Stops (red circles) are sized by the number of times a bus on the selected route stops at that bus stop in the hour after the selected hour.
-  </p>
-  <p>
-    You can click and drag to pan the map and you can zoom using the mouse wheel.
-  </p>
-  <p>
-    It may take a second to load new data!
-  </p>
+  <p>Click and drag to pan the map. </p>
+  <p>Zoom using the mouse wheel.</p>
+  <p>Choose the hour of the day to show the system map and then click on "Draw Routes" </p>
+  <div id="legend_container"></div>
 </div>
 
 <div class="container outline">
   <form oninput="readout.value = time.valueAsNumber">
-    <label for="routeChooser">Bus Route:</label>
-    <select id='routeChooser'><select>
     <label for="time">Hour:</label>
     <output for="startHour" name="readout">12</output>
     <input name="time" type="range" id="startHour" value="12" min="1" max="24" step="1">
-    <button type="button" id="draw">Draw Route</button>
+    <button type="button" id="draw">Draw Routes</button>
   </form>
-
   <div id="map_container"></div>
+  <div id="tooltip" class="hidden"><span class="value"></span></div>
 </div>
 
 <div class="container">

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'busroute/:id' => 'routes#busroute'
   get 'busstops/:id' => 'routes#busstops'
+  get 'frequency/:id' => 'routes#frequency'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

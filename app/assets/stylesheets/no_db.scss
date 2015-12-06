@@ -10,6 +10,8 @@ body {
 path {
   fill: none;
   stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 
 .container {
@@ -25,17 +27,6 @@ path {
 
 .outline {
   border: 1px solid #4b4b4b;
-}
-
-.bus_route {
-  stroke: #ba0000;
-  fill: none;
-  stroke-width: 3px;
-}
-
-.bus_stop {
-  stroke: #a22930;
-  fill: #ba0000;
 }
 
 .map {
@@ -74,15 +65,116 @@ path {
   width: 256px;
   height: 256px;
 
-  path {
-    fill: none;
-    stroke: #000;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-  }
-
   .major_road { stroke: #444; }
   .minor_road { stroke: #bbb; }
-  .highway { stroke: #001054; stroke-width: 1.5px; }
-  .rail { stroke: #007a14; }
+  .highway { stroke: #737373; stroke-width: 1.5px; }
+  .rail { stroke: #808285; }
 }
+
+.freq-1 { stroke-width: 1.5px; }
+.freq-2 { stroke-width: 1.5px; }
+.freq-3 { stroke-width: 2px; }
+.freq-4 { stroke-width: 3px; }
+.freq-5 { stroke-width: 4px; }
+.freq-6 { stroke-width: 5px; }
+.freq-7 { stroke-width: 6px; }
+.freq-8 { stroke-width: 6px; }
+.freq-9 { stroke-width: 6px; }
+.freq-10 { stroke-width: 6px; }
+.freq-11 { stroke-width: 6px; }
+.freq-12 { stroke-width: 6px; }
+.freq-13 { stroke-width: 6px; }
+.freq-14 { stroke-width: 6px; }
+
+$munimetro: #c4074e;
+$express: 	#005595;
+$rapid: 		#0080c1;
+$bus: 			#569bbe;
+$cablecar: 	#e7a614;
+$owl: 			#6f0000;
+
+.route-10867 { stroke: $bus; } /* 1 California */
+.route-1033 { stroke: $express; } /* 1AX California A Express */
+.route-1034 { stroke: $express; } /* 1BX California B Express */
+.route-1002 { stroke: $bus; } /* 2 Clement */
+.route-1003 { stroke: $bus; } /* 3 Jackson */
+.route-1005 { stroke: $bus; } /* 5 Fulton */
+.route-1055 { stroke: $rapid; } /* 5R Fulton Rapid */
+.route-10974 { stroke: $bus; } /* 6 Parnassus */
+.route-1071 { stroke: $bus; } /* 7 Haight - Noriega */
+.route-1072 { stroke: $rapid; } /* 7R Noriega Rapid */
+.route-10874 { stroke: $express; } /* 7X Noriega Express */
+.route-1110 { stroke: $bus; } /* 8 Bayshore */
+.route-1108 { stroke: $express; } /* 8AX Bayshore A Express */
+.route-1109 { stroke: $express; } /* 8BX Bayshore B Express */
+.route-1900 { stroke: $bus; } /* 9 San Bruno */
+.route-1901 { stroke: $rapid; } /* 9R San Bruno Rapid */
+.route-1010 { stroke: $bus; } /* 10 Townsend */
+.route-1012 { stroke: $bus; } /* 12 Folsom/Pacific */
+.route-10879 { stroke: $bus; } /* 14 Mission */
+.route-10880 { stroke: $rapid; } /* 14R Mission Rapid */
+.route-10881 { stroke: $express; } /* 14X Mission Express */
+.route-10882 { stroke: $bus; } /* 18 46th Avenue */
+.route-10883 { stroke: $bus; } /* 19 Polk */
+.route-10884 { stroke: $bus; } /* 21 Hayes */
+.route-10885 { stroke: $bus; } /* 22 Fillmore */
+.route-10886 { stroke: $bus; } /* 23 Monterey */
+.route-10887 { stroke: $bus; } /* 24 Divisadero */
+.route-10888 { stroke: $bus; } /* 25 Treasure Island */
+.route-10889 { stroke: $bus; } /* 27 Bryant */
+.route-1028 { stroke: $bus; } /* 28 19th Avenue */
+.route-10986 { stroke: $rapid; } /* 28R 19th Avenue Rapid */
+.route-10891 { stroke: $bus; } /* 29 Sunset */
+.route-1030 { stroke: $bus; } /* 30 Stockton */
+.route-10893 { stroke: $express; } /* 30X Marina Express */
+.route-10894 { stroke: $bus; } /* 31 Balboa */
+.route-1031 { stroke: $express; } /* 31AX Balboa A Express */
+.route-1032 { stroke: $express; } /* 31BX Balboa B Express */
+.route-10895 { stroke: $bus; } /* 33 Ashbury-18th */
+.route-10896 { stroke: $bus; } /* 35 Eureka */
+.route-10897 { stroke: $bus; } /* 36 Teresita */
+.route-10898 { stroke: $bus; } /* 37 Corbett */
+.route-10899 { stroke: $bus; } /* 38 Geary */
+.route-1038 { stroke: $express; } /* 38AX Geary A Express */
+.route-1039 { stroke: $express; } /* 38BX Geary B Express */
+.route-10900 { stroke: $rapid; } /* 38R Geary Rapid */
+.route-10901 { stroke: $bus; } /* 39 Coit Tower */
+.route-10902 { stroke: $bus; } /* 41 Union */
+.route-10903 { stroke: $bus; } /* 43 Masonic */
+.route-10904 { stroke: $bus; } /* 44 OShaughnessy */
+.route-1045 { stroke: $bus; } /* 45 Stockton - Union */
+.route-10906 { stroke: $bus; } /* 47 Van Ness */
+.route-10907 { stroke: $bus; } /* 48 24th Street */
+.route-10908 { stroke: $bus; } /* 49 Van Ness-Mission */
+.route-10909 { stroke: $bus; } /* 52 Excelsior */
+.route-10910 { stroke: $bus; } /* 54 Felton */
+.route-10911 { stroke: $bus; } /* 55 16th Street */
+.route-10912 { stroke: $bus; } /* 56 Rutland */
+.route-10913 { stroke: $bus; } /* 57 Parkmerced */
+.route-10917 { stroke: $bus; } /* 66 Quintara */
+.route-10918 { stroke: $bus; } /* 67 Bernal Heights */
+.route-10919 { stroke: $express; } /* 76X Marin Headlands Express */
+.route-1081 { stroke: $express; } /* 81X Caltrain Express */
+.route-1082 { stroke: $express; } /* 82X Levi Plaza Express */
+.route-10921 { stroke: $express; } /* 83X Mid Market Express */
+.route-10922 { stroke: $bus; } /* 88 Bart Shuttle */
+.route-10923 { stroke: $bus; } /* 90 San Bruno Owl */
+.route-10924 { stroke: $bus; } /* 91 3Rd-19th Ave Owl */
+.route-11029 { stroke: $munimetro; } /* E Embarcadero */
+.route-10928 { stroke: $owl; } /* F Market & Wharves */
+.route-1094 { stroke: $munimetro; } /* J Church */
+.route-1196 { stroke: $munimetro; } /* KT Ingleside/Third */
+.route-1198 { stroke: $munimetro; } /* L Taraval */
+.route-1199 { stroke: $munimetro; } /* M Ocean View */
+.route-1093 { stroke: $munimetro; } /* N Judah */
+.route-10938 { stroke: $munimetro; } /* NX N Express */
+.route-1197 { stroke: $munimetro; } /* S Castro Shuttle */
+.route-1102 { stroke: $owl; } /* K-Owl */
+.route-1103 { stroke: $owl; } /* L-Owl */
+.route-1104 { stroke: $owl; } /* M-Owl */
+.route-1105 { stroke: $owl; } /* N-Owl */
+.route-1106 { stroke: $owl; } /* T-Owl */
+.route-11030 { stroke: $bus; } /* Muni Metro Bus Shuttle */
+.route-1060 { stroke: $cablecar; } /* Powell-Hyde */
+.route-1059 { stroke: $cablecar; } /* Powell-Mason */
+.route-10916 { stroke: $cablecar; } /* California */
