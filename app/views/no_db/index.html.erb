@@ -3,7 +3,8 @@
 <div class="container">
   <p>Click and drag to pan the map. </p>
   <p>Zoom using the mouse wheel.</p>
-  <p>Choose the hour of the day to show all routes</p>
+  <p>Choose the hour of the day to show the system map and then click on "Draw Routes" </p>
+  <div id="legend_container"></div>
 </div>
 
 <div class="container outline">
@@ -13,7 +14,6 @@
     <input name="time" type="range" id="startHour" value="12" min="1" max="24" step="1">
     <button type="button" id="draw">Draw Routes</button>
   </form>
-
   <div id="map_container"></div>
   <div id="tooltip" class="hidden"><span class="value"></span></div>
 </div>

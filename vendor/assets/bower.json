@@ -3,6 +3,7 @@
   "dependencies": {
     "d3": "latest",
     "topojson": "latest",
-    "tile": "https://raw.githubusercontent.com/d3/d3-plugins/master/geo/tile/tile.js"
+    "tile": "https://raw.githubusercontent.com/d3/d3-plugins/master/geo/tile/tile.js",
+    "d3-legend": "latest"
   }
 }

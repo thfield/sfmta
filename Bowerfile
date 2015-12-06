@@ -5,3 +5,4 @@
 asset 'd3'
 asset 'topojson'
 asset "tile", "https://raw.githubusercontent.com/d3/d3-plugins/master/geo/tile/tile.js"
+asset 'd3-legend'
