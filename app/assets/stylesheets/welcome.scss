@@ -41,6 +41,20 @@ path {
   position: absolute;
 }
 
+.error_container {
+  position: relative;
+  margin: auto;
+  background-color: #fff;
+  // width: 600px;
+
+  p {
+    border: 2px solid #c4074e;
+    padding: 1rem;
+    font-size: 2rem;
+    color: #c4074e;
+  }
+}
+
 #tooltip {
   position: absolute;
   /*width: 200px;*/

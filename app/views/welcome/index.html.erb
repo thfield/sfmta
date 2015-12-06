@@ -23,11 +23,11 @@
     <select id='routeChooser'><select>
     <label for="starttime">start:</label>
     <output for="startHour" name="startreadout">12</output>
-    <input name="starttime" type="range" id="startHour" value="12" min="1" max="24" step="1">
+    <input name="starttime" type="range" id="startHour" value="1" min="1" max="24" step="1">
 
     <label for="endtime">end:</label>
     <output for="endHour" name="endreadout">12</output>
-    <input name="endtime" type="range" id="endHour" value="12" min="1" max="24" step="1">
+    <input name="endtime" type="range" id="endHour" value="1" min="1" max="24" step="1">
 
     <button type="button" id="draw">Draw Route</button>
 
@@ -35,6 +35,7 @@
   </form>
 
   <div id="map_container"></div>
+
   <div id="tooltip" class="hidden"><span class="value"></span></div>
 </div>
 
