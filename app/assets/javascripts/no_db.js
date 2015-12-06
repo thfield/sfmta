@@ -180,7 +180,7 @@ $(document).ready(function() {
   function freqLegend(){
     var busFrequency = d3.scale.ordinal()
         .domain([1,2,3,4,5,6])
-        .range(['freq-2','freq-3','freq-4','freq-5','freq-6','freq-7']);
+        .range(['freq-2','freq-3','freq-4','freq-6','freq-8','freq-10']);
 
     var line = 'M 0 0 l 20 0';
 
@@ -193,10 +193,10 @@ $(document).ready(function() {
       .shapePadding(15)
       // .orient('horizontal')
       .useClass(true)
-      .labels(['1-2','3','4','5','6','7-14'])
+      .labels(['30-60','20','15','10','7','5'])
       .labelOffset(15)
       .scale(busFrequency)
-      .title('Busses each Hour');
+      .title('a bus every __ minutes');
 
     legendSvg.select(".frequencyLegend")
       .call(frequencyLegend);

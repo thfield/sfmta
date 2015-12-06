@@ -6,6 +6,13 @@ class RoutesController < ApplicationController
     # inbound_trip = @stoptimesOnMyRoute.where(:trips => {direction_id: 0}).first
     # outbound_trip = @stoptimesOnMyRoute.where(:trips => {direction_id: 1}).first
 
+    myStops = @stoptimesOnMyRoute.uniq.pluck(:stop_id)
+    frequencies = Array.new
+    myStops.each do |stop|
+      frequencies.push( @stoptimesOnMyRoute.where(stop_id: stop).length )
+    end
+    stopavg = frequencies.inject{ |sum, el| sum + el }.to_f / frequencies.size
+
     distinct_trip_ids = @stoptimesOnMyRoute.map(&:trip_id).uniq
     distinct_shape_nums_from_myRoutes = Trip.where(id: distinct_trip_ids).map(&:shape_id).uniq
     # distinct_shapes_from_myRoutes = Trip.where(id: distinct_trip_ids).select(:shape_id).distinct
@@ -21,7 +28,8 @@ class RoutesController < ApplicationController
         'type'=>'Feature',
         'properties' => {
           'route' => @whichRoute,
-          'time' => @whatHour
+          'time' => @whatHour,
+          'freq' => stopavg.floor
         },
         'geometry' => {'type' => 'LineString',
                        'coordinates' => coordinates
