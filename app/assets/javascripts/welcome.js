@@ -59,11 +59,12 @@ $(document).ready(function() {
         .style("width", width + "px")
         .style("height", height + "px");
 
+  var errcontainer = map.append('div').attr('class', 'error_container')
+
   zoomed();
 
   $('#draw').on('click', function () {
     $('.bus_route').remove();
-    $('.bus_stop').remove();
     var busroute = $('#routeChooser').val(),
         startHour = $('#startHour').val(),
         endHour = $('#endHour').val();
@@ -73,7 +74,8 @@ $(document).ready(function() {
     if (+endHour > +startHour){
       jsonPath = jsonPath.concat('&end='+endHour)
     }
-    d3.json(jsonPath, function(data){
+    d3.json(jsonPath, function(error,data){
+      if (error) showError("The route you chose doesn't have any trips at those times.");
       route.call(renderRouteline, data);
       routelineData = data;
     })
@@ -171,6 +173,12 @@ $(document).ready(function() {
 
   function ttHide() {
     d3.select('#tooltip').classed('hidden', true);
+  }
+
+  function showError(errorMessage){
+    errcontainer.append('p').text(errorMessage)
+      .transition().delay(2000).duration(1000).style('opacity', 0).remove()
+    // errcontainer.classed('hidden', true)
   }
 
   var legendSvg = d3.select("#legend_container")
