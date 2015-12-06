@@ -10,6 +10,8 @@ body {
 path {
   fill: none;
   stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 
 .container {
@@ -61,13 +63,6 @@ path {
   position: absolute;
   width: 256px;
   height: 256px;
-
-  path {
-    fill: none;
-    stroke: #000;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-  }
 
   .major_road { stroke: #444; }
   .minor_road { stroke: #bbb; }

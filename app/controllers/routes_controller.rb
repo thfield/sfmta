@@ -45,8 +45,11 @@ class RoutesController < ApplicationController
     "features" => features
     }
 
-    render json: @returndata
-    # render html: @startHour
+    if @returndata['features'].length > 0
+      render json: @returndata
+    else
+      render html: 'error: no trips in requested timeframe'
+    end
   end
 
   def busstops
