@@ -19,13 +19,20 @@
 <div class="container" id="legend_container"></div>
 
 <div class="container outline">
-  <form oninput="readout.value = time.valueAsNumber">
+  <form oninput="startreadout.value = starttime.valueAsNumber; endreadout.value = endtime.valueAsNumber">
     <label for="routeChooser">Bus Route:</label>
     <select id='routeChooser'><select>
-    <label for="time">Hour:</label>
-    <output for="startHour" name="readout">12</output>
-    <input name="time" type="range" id="startHour" value="12" min="1" max="24" step="1">
+    <label for="starttime">start:</label>
+    <output for="startHour" name="startreadout">12</output>
+    <input name="starttime" type="range" id="startHour" value="12" min="1" max="24" step="1">
+
+    <label for="endtime">end:</label>
+    <output for="endHour" name="endreadout">12</output>
+    <input name="endtime" type="range" id="endHour" value="12" min="1" max="24" step="1">
+
     <button type="button" id="draw">Draw Route</button>
+
+    <input type="time" name="name" value="" hidden=true>
   </form>
 
   <div id="map_container"></div>

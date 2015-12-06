@@ -64,11 +64,20 @@ $(document).ready(function() {
   $('#draw').on('click', function () {
     $('.bus_route').remove();
     $('.bus_stop').remove();
-    d3.json('busroute/'+ $('#routeChooser').val() + '?time=' + $('#startHour').val(), function(data){
+    var busroute = $('#routeChooser').val(),
+        startHour = $('#startHour').val(),
+        endHour = $('#endHour').val();
+
+    var jsonPath = 'busroute/'+ busroute + '?start=' + startHour;
+
+    if (+endHour > +startHour){
+      jsonPath = jsonPath.concat('&end='+endHour)
+    }
+    d3.json(jsonPath, function(data){
       route.call(renderRouteline, data);
       routelineData = data;
     })
-    logit($('#routeChooser').val(), $('#startHour').val());
+    // console.log(jsonPath);
   });
 
   function zoomed() {
@@ -112,7 +121,7 @@ $(document).ready(function() {
         });
 
     ttHide();
-    d3.select('.bus_route').remove();
+    d3.selectAll('.bus_route').remove();
     route.call(renderRouteline, routelineData);
   }
 
@@ -139,11 +148,6 @@ $(document).ready(function() {
           })
           .on('mouseout', function(){ ttHide(); });
     })
-  }
-
-  function logit(routeNum, hour){
-    // for help with development
-    console.log('/'+ routeNum + '?time=' + hour);
   }
 
   function highlight(){

@@ -26,17 +26,6 @@ path {
   border: 1px solid #4b4b4b;
 }
 
-.bus_route {
-  stroke: #ba0000;
-  fill: none;
-  stroke-width: 3px;
-}
-
-.bus_stop {
-  stroke: #a22930;
-  fill: #ba0000;
-}
-
 .map {
   position: relative;
   overflow: hidden;
@@ -82,11 +71,11 @@ path {
 
   .major_road { stroke: #444; }
   .minor_road { stroke: #bbb; }
-  .highway { stroke: #001054; stroke-width: 1.5px; }
-  .rail { stroke: #007a14; }
+  .highway { stroke: #737373; stroke-width: 1.5px; }
+  .rail { stroke: #808285; }
 }
 
-.freq-1 { stroke-width: 1px; }
+.freq-1 { stroke-width: 1.5px; }
 .freq-2 { stroke-width: 1.5px; }
 .freq-3 { stroke-width: 2px; }
 .freq-4 { stroke-width: 3px; }

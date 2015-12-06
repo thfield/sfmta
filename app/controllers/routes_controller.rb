@@ -6,12 +6,14 @@ class RoutesController < ApplicationController
     # inbound_trip = @stoptimesOnMyRoute.where(:trips => {direction_id: 0}).first
     # outbound_trip = @stoptimesOnMyRoute.where(:trips => {direction_id: 1}).first
 
+    inquiry_period = @endHour - @startHour
+
     myStops = @stoptimesOnMyRoute.uniq.pluck(:stop_id)
     frequencies = Array.new
     myStops.each do |stop|
       frequencies.push( @stoptimesOnMyRoute.where(stop_id: stop).length )
     end
-    stopavg = frequencies.inject{ |sum, el| sum + el }.to_f / frequencies.size
+    stopavg = frequencies.inject{ |sum, el| sum + (el/inquiry_period) }.to_f / frequencies.size
 
     distinct_trip_ids = @stoptimesOnMyRoute.map(&:trip_id).uniq
     distinct_shape_nums_from_myRoutes = Trip.where(id: distinct_trip_ids).map(&:shape_id).uniq
@@ -28,7 +30,9 @@ class RoutesController < ApplicationController
         'type'=>'Feature',
         'properties' => {
           'route' => @whichRoute,
-          'time' => @whatHour,
+          'shape' => pathway,
+          'start' => @startHour,
+          'end' => @endHour,
           'freq' => stopavg.floor
         },
         'geometry' => {'type' => 'LineString',
@@ -42,7 +46,7 @@ class RoutesController < ApplicationController
     }
 
     render json: @returndata
-    # render html: @whatHour
+    # render html: @startHour
   end
 
   def busstops
@@ -81,15 +85,21 @@ class RoutesController < ApplicationController
     def set_route
       #zeroday is probably the day you seeded your DB
       zeroday = DateTime.parse('2015-12-02')
+      params[:end] ||= params[:start].to_i + 1
+
+      if params[:end].to_i < params[:start].to_i
+        params[:end] = params[:start].to_i + 1
+      end
 
       @whichRoute = params[:id]
-      @whatHour = params[:time].to_i
+      @startHour = params[:start].to_i
+      @endHour = params[:end].to_i
 
-      # @whichRoute = 10891
-      # @whatHour = 12
+      # @whichRoute = 10867
+      # @startHour = 12
+      # @endHour = 13
 
-      # @myRoute = Route.where(id: @whichRoute)[0]
-      allStops = StopTime.includes({trip: :route}, :stop).where( arrival_time: (zeroday.change( { hour: @whatHour } )..zeroday.change( { hour: @whatHour + 1 } )) )
+      allStops = StopTime.includes({trip: :route}, :stop).where( arrival_time: (zeroday.change( { hour: @startHour } )..zeroday.change( { hour: @endHour } )) )
       myRoutesTrips = Array.new
       #only look at trips that happen on the weekdays (serivce_id == 1)
       Trip.where(route_id: @whichRoute, service_id: 1).each do |trip|
@@ -102,6 +112,6 @@ class RoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
-      params[:route].permit(:time)
+      params[:route].permit(:start, :end)
     end
 end
